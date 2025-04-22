@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome to My Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playwrite+MX+Guides&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Dancing Script', cursive;
+      margin: 0;
+      background: #FFF8DC;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+      font-family: 'Dancing Script', serif;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #FF6F91;
+    }
+
+    .top-half {
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF5F8;
+    }
+
+    .top-half h1 {
+      font-size: 4rem;
+      letter-spacing: 3px;
+      color: #FF6F91;
+      text-align: center;
+      margin: 0;
+    }
+
+    .bottom-half {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF5F8;
+    }
+
+    .illustration {
+      height: auto;
+      width: 100vw;
+      object-fit: cover;
+      box-shadow: none;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      font-family: 'ZCOOL KuaiLe', cursive;
+      font-size: 1.2rem;
+    }
+
+    .tab {
+      padding: 0.5rem 1.5rem;
+      background: #FFD3E0;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      background: #FF6F91;
+      color: white;
+    }
+
+    .tab:hover {
+      background: #FF9DB5;
+    }
+
+    .content-section {
+      display: none;
+      padding: 0 2rem 3rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #FFF;
+      cursor: pointer;
+      height: 320px;
+      justify-content: flex-start;
+
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3);
+      padding: 1rem;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+    }
+
+    .card-front img,
+    .card-back img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      height: 140px;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-front h3 {
+      margin: 0.5rem 0;
+      color: #FF6F91;
+      font-size: 1.1rem;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="top-half">
+    <h1>Welcome to Jing's Kitchen</h1>
+  </div>
+  
+  <div class="bottom-half">
+    <img src="images/banner.png" alt="illustration" class="illustration">
+  </div>
+  <!-- labels -->
+  <div class="tabs">
+    <div class="tab active" onclick="showSection('stirfry')">炒菜</div>
+    <div class="tab" onclick="showSection('dessert')">甜品</div>
+    <div class="tab" onclick="showSection('drinks')">饮品</div>
+  </div>
+
+  <!-- 内容区：炒菜 -->
+  <div id="stirfry" class="content-section active">
+    <div class="card-grid">
+      <div class="card" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="images/hongshaorou_draw.jpg" alt="红烧肉">
+            <h3>红烧肉</h3>
+          </div>
+          <div class="card-back">
+            <img src="images/hongshaorou_real.jpg" alt="红烧肉实物">
+            <p><strong>材料：</strong> 五花肉、酱油、糖、葱姜</p>
+            <p><strong>星级：</strong> ⭐⭐⭐⭐</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="card">
+        <img src="images/tomatoegg_draw.jpg" alt="番茄炒蛋">
+        <h3>番茄炒蛋</h3>
+      </div>
+      <div class="card">
+        <img src="images/jituifan_draw.jpg" alt="鸡腿饭">
+        <h3>鸡腿饭</h3>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- 内容区：甜品 -->
+  <div id="dessert" class="content-section">
+    <div class="card-grid">
+      <div class="card">
+        <img src="images/cake_draw.jpg" alt="草莓蛋糕">
+        <h3>草莓蛋糕</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- 内容区：饮品 -->
+  <div id="drinks" class="content-section">
+    <div class="card-grid">
+      <div class="card">
+        <img src="images/milktea_draw.jpg" alt="奶茶">
+        <h3>奶茶</h3>
+      </div>
+    </div>
+  </div>
+    
+  
+  <!-- only show the chosen label, remove all other active contents and labels -->
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+
+      document.querySelector(`[onclick="showSection('${id}')"]`).classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Jump automaticaclly to labels and menu - add window listener
+    window.addEventListener('scroll', () => {
+      const tabs = document.getElementById('tabs');
+      if (window.scrollY > 50) { // jump when scroll over 300 px, or back to original position
+        tabs.style.position = 'fixed';
+        tabs.style.top = '0';
+        tabs.style.width = '100%';
+        tabs.style.zIndex = '10';
+      } else {
+        tabs.style.position = 'relative';
+        tabs.style.top = 'auto';
+      }
+    });
+
+
+  </script>
+</body>
+</html>
